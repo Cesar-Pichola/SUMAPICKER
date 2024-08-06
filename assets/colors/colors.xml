@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Brand -->
+  <color name="primary" type="material material-accent">#F23005</color>
+  <color name="secondary" type="material material-accent">#FFD3BE</color>
+  <color name="tertiary" type="material material-accent">#FFAAA6</color>
+  <color name="alternate" type="material material-accent">#FF8C94</color>
+  <!-- Utility -->
+  <color name="border">#DEE2E6</color>
+  <color name="borderDisabled">#F8F9FA</color>
+  <color name="primaryText">#14181B</color>
+  <color name="secondaryText">#57636C</color>
+  <color name="primaryBackground">#F1F4F8</color>
+  <color name="secondaryBackground">#FFFFFF</color>
+  <!-- Semantic -->
+  <color name="success">#249689</color>
+  <color name="error">#FF5963</color>
+  <color name="warning">#F9CF58</color>
+  <color name="info">#11CDEF</color>
+</resources>
