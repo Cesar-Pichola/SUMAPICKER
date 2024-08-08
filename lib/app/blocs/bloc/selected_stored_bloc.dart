@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:core/core.dart';
+import 'package:injectable/injectable.dart';
 
 part 'selected_stored_event.dart';
 part 'selected_stored_state.dart';

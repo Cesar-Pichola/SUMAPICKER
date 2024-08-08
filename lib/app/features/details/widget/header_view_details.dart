@@ -2,12 +2,15 @@ import 'package:animate_do/animate_do.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:picker/app/routes/app_router.dart';
 import 'package:picker/gen/assets.gen.dart';
 
 class HeaderViewDetails extends StatelessWidget {
+  final String code;
+  final String nameClient;
   const HeaderViewDetails({
     super.key,
+    required this.code,
+    required this.nameClient,
   });
 
   @override
@@ -58,16 +61,16 @@ class HeaderViewDetails extends StatelessWidget {
                     children: [
                       FadeIn(
                         child: Text(
-                          'No. 26604291',
+                          'No. $code',
                           style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 16,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
                       FadeIn(
                         child: Text(
-                          'Hector Ramírez',
+                          nameClient,
                           style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 14,

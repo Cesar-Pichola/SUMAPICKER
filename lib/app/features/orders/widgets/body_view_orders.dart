@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:picker/app/features/orders/widgets/list_orders.dart';
-import 'package:picker/app/widgets/custom_input/custom_input.dart';
 
 class BodyOrdersView extends StatefulWidget {
-  const BodyOrdersView({
-    super.key,
-  });
+  final int store;
+  const BodyOrdersView({super.key, required this.store});
 
   @override
   State<BodyOrdersView> createState() => _BodyOrdersViewState();
@@ -35,8 +33,11 @@ class _BodyOrdersViewState extends State<BodyOrdersView> {
       ),
       child: Column(
         children: [
-          CustomInput(controller: controller),
-          const Expanded(child: ListOrders())
+          // CustomInput(controller: controller),
+          Expanded(
+              child: ListOrders(
+            store: widget.store,
+          ))
         ],
       ),
     );

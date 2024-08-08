@@ -55,7 +55,7 @@ class _StoresListState extends State<StoresList> {
                     if (state.status is UILoading) {
                       return const SpinKitThreeBounce(
                         color: Colors.red,
-                        size: 50.0,
+                        size: 40.0,
                       );
                     }
                     if (state.status is UIError) {
@@ -95,8 +95,6 @@ class _StoresListState extends State<StoresList> {
           BlocListener<SelectedStoredBloc, SelectedStoredState>(
             listener: (context, state) {
               if (state.id != null && state.name != null) {
-                print(state.id);
-                print(state.name);
                 context.navigateTo(
                     OrdersRoute(id: state.id.toString(), name: state.name!));
               }

@@ -16,9 +16,22 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     DetailsRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<DetailsRouteArgs>(
+          orElse: () => DetailsRouteArgs(
+                order: pathParams.getString('order'),
+                name: pathParams.getString('name'),
+                status: pathParams.getString('status'),
+                store: pathParams.getString('store'),
+              ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DetailsPage(),
+        child: DetailsPage(
+          order: args.order,
+          name: args.name,
+          status: args.status,
+          store: args.store,
+        ),
       );
     },
     OrdersRoute.name: (routeData) {
@@ -47,16 +60,56 @@ abstract class _$AppRouter extends RootStackRouter {
 
 /// generated route for
 /// [DetailsPage]
-class DetailsRoute extends PageRouteInfo<void> {
-  const DetailsRoute({List<PageRouteInfo>? children})
-      : super(
+class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
+  DetailsRoute({
+    required String order,
+    required String name,
+    required String status,
+    required String store,
+    List<PageRouteInfo>? children,
+  }) : super(
           DetailsRoute.name,
+          args: DetailsRouteArgs(
+            order: order,
+            name: name,
+            status: status,
+            store: store,
+          ),
+          rawPathParams: {
+            'order': order,
+            'name': name,
+            'status': status,
+            'store': store,
+          },
           initialChildren: children,
         );
 
   static const String name = 'DetailsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<DetailsRouteArgs> page =
+      PageInfo<DetailsRouteArgs>(name);
+}
+
+class DetailsRouteArgs {
+  const DetailsRouteArgs({
+    required this.order,
+    required this.name,
+    required this.status,
+    required this.store,
+  });
+
+  final String order;
+
+  final String name;
+
+  final String status;
+
+  final String store;
+
+  @override
+  String toString() {
+    return 'DetailsRouteArgs{order: $order, name: $name, status: $status, store: $store}';
+  }
 }
 
 /// generated route for

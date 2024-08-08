@@ -19,7 +19,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: DetailsRoute.page,
-          path: '/detail',
+          path: '/detail/:order/:name/:store/:status',
         )
       ];
 }

@@ -19,21 +19,21 @@ class _RestApiClient implements RestApiClient {
   String? baseUrl;
 
   @override
-  Future<StoreResponseModel> getStores(Map<String, dynamic> body) async {
+  Future<OrdersResponse> getOrders(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<StoreResponseModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<OrdersResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'stores',
+              'orders/',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -42,7 +42,91 @@ class _RestApiClient implements RestApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = StoreResponseModel.fromJson(_result.data!);
+    final _value = OrdersResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<DetailResponse> getDetailOrder(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DetailResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'orders/detail',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = DetailResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<ProcessResponse> processOrder(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ProcessResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'orders/actions/process',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = ProcessResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<DoneResponse> doneOrder(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DoneResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'orders/actions/done',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = DoneResponse.fromJson(_result.data!);
     return _value;
   }
 

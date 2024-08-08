@@ -13,6 +13,19 @@ import 'package:core/vendors/dio/dio.dart' as _i48;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:picker/app/blocs/bloc/selected_stored_bloc.dart' as _i957;
+import 'package:picker/app/features/details/bloc/bloc_detail/detail_bloc.dart'
+    as _i787;
+import 'package:picker/app/features/details/bloc/done_bloc/done_bloc.dart'
+    as _i569;
+import 'package:picker/app/features/details/bloc/Process_bloc/process_bloc.dart'
+    as _i816;
+import 'package:picker/app/features/details/use_case/done_order.dart' as _i82;
+import 'package:picker/app/features/details/use_case/get_detail.dart' as _i270;
+import 'package:picker/app/features/details/use_case/process_order.dart'
+    as _i98;
+import 'package:picker/app/features/orders/blocs/orders_bloc/orders_bloc.dart'
+    as _i693;
+import 'package:picker/app/features/orders/use_cases/get_orders.dart' as _i513;
 import 'package:picker/app/features/stores/blocs/store_bloc/stores_bloc.dart'
     as _i325;
 import 'package:picker/app/features/stores/use_cases/get_stores.dart' as _i205;
@@ -40,8 +53,24 @@ extension GetItInjectableX on _i174.GetIt {
         () => appModule.resourceRespository(gh<_i992.RestApiClient>()));
     gh.lazySingleton<_i205.GetStoresUseCase>(() => _i205.GetStoresUseCase(
         resourceRespository: gh<_i494.IResourceRespository>()));
+    gh.lazySingleton<_i513.GetOrdersUseCase>(() => _i513.GetOrdersUseCase(
+        resourceRespository: gh<_i494.IResourceRespository>()));
+    gh.lazySingleton<_i270.GetDetailUseCase>(() => _i270.GetDetailUseCase(
+        resourceRespository: gh<_i494.IResourceRespository>()));
+    gh.lazySingleton<_i98.ProcessOrderUseCase>(() => _i98.ProcessOrderUseCase(
+        resourceRespository: gh<_i494.IResourceRespository>()));
+    gh.lazySingleton<_i82.DoneOrderUseCase>(() => _i82.DoneOrderUseCase(
+        resourceRespository: gh<_i494.IResourceRespository>()));
     gh.lazySingleton<_i325.StoresBloc>(
         () => _i325.StoresBloc(gh<_i205.GetStoresUseCase>()));
+    gh.lazySingleton<_i787.DetailBloc>(
+        () => _i787.DetailBloc(gh<_i270.GetDetailUseCase>()));
+    gh.lazySingleton<_i569.DoneBloc>(
+        () => _i569.DoneBloc(gh<_i82.DoneOrderUseCase>()));
+    gh.lazySingleton<_i816.ProcessBloc>(
+        () => _i816.ProcessBloc(gh<_i98.ProcessOrderUseCase>()));
+    gh.lazySingleton<_i693.OrdersBloc>(
+        () => _i693.OrdersBloc(gh<_i513.GetOrdersUseCase>()));
     return this;
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:picker/app/blocs/bloc/selected_stored_bloc.dart';
+import 'package:picker/app/features/details/bloc/Process_bloc/process_bloc.dart';
+import 'package:picker/app/features/details/bloc/bloc_detail/detail_bloc.dart';
+import 'package:picker/app/features/details/bloc/done_bloc/done_bloc.dart';
+import 'package:picker/app/features/orders/blocs/orders_bloc/orders_bloc.dart';
 import 'package:picker/app/features/stores/blocs/store_bloc/stores_bloc.dart';
 import 'package:picker/app/routes/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,6 +33,17 @@ class MyApp extends StatelessWidget {
           BlocProvider<SelectedStoredBloc>(
             create: (context) => getIt<SelectedStoredBloc>(),
           ),
+          BlocProvider<OrdersBloc>(
+            lazy: false,
+            create: (context) => getIt<OrdersBloc>(),
+          ),
+          BlocProvider<DetailBloc>(create: (context) => getIt<DetailBloc>()),
+          BlocProvider<ProcessBloc>(
+            create: (context) => getIt<ProcessBloc>(),
+          ),
+          BlocProvider<DoneBloc>(
+            create: (context) => getIt<DoneBloc>(),
+          )
         ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

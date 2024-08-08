@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:core/core.dart';
+import 'package:injectable/injectable.dart';
 import 'package:picker/app/features/stores/use_cases/get_stores.dart';
 
 part 'stores_event.dart';

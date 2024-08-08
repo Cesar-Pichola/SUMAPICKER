@@ -1,9 +1,13 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemDetail extends StatelessWidget {
+  final ProductEntity product;
   const ItemDetail({
     super.key,
+    required this.product,
   });
 
   @override
@@ -23,7 +27,7 @@ class ItemDetail extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            'https://sistemas.gta.com.gt:8015/msfapp/Gtaimagenes/ImagePro/productos/101011.jpg',
+            product.image.url,
             width: 50,
             height: 50,
             fit: BoxFit.cover,
@@ -33,21 +37,21 @@ class ItemDetail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Agua pura salvavidas manzana',
+                  product.name,
                   style: GoogleFonts.poppins(
                       color: Colors.grey[800],
                       fontSize: 12,
                       fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  'Cantidad : 5',
+                  'Cantidad : ${product.amount}',
                   style: GoogleFonts.poppins(
                       color: Colors.grey[800],
                       fontSize: 13,
                       fontWeight: FontWeight.w400),
                 ),
                 Text(
-                  'Q 200.00',
+                  'Q ${product.price.toStringAsFixed(2)}',
                   style: GoogleFonts.poppins(
                       color: Colors.grey[800],
                       fontSize: 13,

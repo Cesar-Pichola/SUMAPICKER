@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs, omit_local_variable_types
 
 class StoreResponseModel {
   StoreResponseModel({
@@ -9,10 +9,9 @@ class StoreResponseModel {
   });
 
   factory StoreResponseModel.fromJson(Map<String, dynamic> json) {
-    List<StoreModel> stores = (json['store'] as List)
-        .map((storeJson) =>
-            StoreModel.fromJson(storeJson as Map<String, dynamic>))
-        .toList();
+    final List<StoreModel> stores = (json['store'] as List).map((storeJson) =>
+        // ignore: require_trailing_commas
+        StoreModel.fromJson(storeJson as Map<String, dynamic>)).toList();
 
     return StoreResponseModel(
       stores: stores,
@@ -131,7 +130,7 @@ class ImageModel {
 }
 
 class CoverageModel {
-  CoverageModel({this.zones, required this.distance});
+  CoverageModel({required this.distance, this.zones});
 
   factory CoverageModel.fromJson(Map<String, dynamic> json) {
     return CoverageModel(
