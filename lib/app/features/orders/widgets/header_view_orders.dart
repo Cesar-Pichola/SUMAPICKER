@@ -48,7 +48,7 @@ class HeaderViewOrders extends StatelessWidget {
                   name,
                   style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w700),
                 ),
               ),

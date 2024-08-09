@@ -55,7 +55,7 @@ class ItemOrder extends StatelessWidget {
                                 width: 10,
                                 height: 10,
                                 decoration: const BoxDecoration(
-                                    color: Color(0xff07F22B),
+                                    color: Color(0xffF57C11),
                                     shape: BoxShape.circle),
                               )
                             : Container(
@@ -64,7 +64,7 @@ class ItemOrder extends StatelessWidget {
                                 width: 10,
                                 height: 10,
                                 decoration: const BoxDecoration(
-                                    color: Color(0xffF57C11),
+                                    color: Color(0xff07F22B),
                                     shape: BoxShape.circle),
                               )
                       ],

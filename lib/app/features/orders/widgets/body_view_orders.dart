@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:picker/app/features/orders/blocs/orders_bloc/orders_bloc.dart';
 import 'package:picker/app/features/orders/widgets/list_orders.dart';
+import 'package:picker/di/injection.dart';
 
 class BodyOrdersView extends StatefulWidget {
   final int store;
@@ -15,7 +17,7 @@ class _BodyOrdersViewState extends State<BodyOrdersView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15.dm, horizontal: 15.dm),
+      padding: EdgeInsets.symmetric(vertical: 5.dm, horizontal: 15.dm),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -33,6 +35,15 @@ class _BodyOrdersViewState extends State<BodyOrdersView> {
       ),
       child: Column(
         children: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: GestureDetector(
+              onTap: () {
+                getIt<OrdersBloc>().add(GetOrdersStore(store: widget.store));
+              },
+              child: const Icon(Icons.refresh),
+            ),
+          ),
           // CustomInput(controller: controller),
           Expanded(
               child: ListOrders(

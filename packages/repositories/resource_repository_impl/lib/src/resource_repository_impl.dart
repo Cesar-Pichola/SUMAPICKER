@@ -180,7 +180,7 @@ class ResourceRepositoryImpl extends IResourceRespository {
         'order': {'code': order},
       };
 
-      final response = await restApiClient.processOrder(body);
+      final response = await restApiClient.doneOrder(body);
       return Right(
         DoneEntity(
           code: response.code,

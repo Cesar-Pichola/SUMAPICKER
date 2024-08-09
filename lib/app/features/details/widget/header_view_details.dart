@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:picker/gen/assets.gen.dart';
 
@@ -30,7 +31,6 @@ class HeaderViewDetails extends StatelessWidget {
         ),
         Positioned(
             child: SizedBox(
-          width: 200,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -64,7 +64,7 @@ class HeaderViewDetails extends StatelessWidget {
                           'No. $code',
                           style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 15,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
@@ -73,8 +73,34 @@ class HeaderViewDetails extends StatelessWidget {
                           nameClient,
                           style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 14,
+                              fontSize: 13,
                               fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          _showModal(
+                              context,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    nameClient,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              ));
+                        },
+                        child: Text(
+                          'Ver mas',
+                          style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 12,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.white,
+                              fontWeight: FontWeight.w300),
                         ),
                       ),
                     ],
@@ -85,4 +111,18 @@ class HeaderViewDetails extends StatelessWidget {
       ],
     );
   }
+}
+
+void _showModal(BuildContext context, Widget child) {
+  final size = MediaQuery.of(context).size;
+  showModalBottomSheet<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        padding: EdgeInsets.all(15.dm),
+        height: size.height * 05,
+        child: Center(child: child),
+      );
+    },
+  );
 }

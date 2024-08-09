@@ -85,7 +85,7 @@ class _BodyOrdersViewState extends State<BodyDetailView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Llevando ${state.products!.length} productos',
+                              'Llevas ${state.products!.length} tipo de productos',
                               style: GoogleFonts.poppins(
                                   color: Colors.grey[800],
                                   fontSize: 12.sp.clamp(10, 12),

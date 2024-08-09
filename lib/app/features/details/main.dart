@@ -25,16 +25,10 @@ class DetailsPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      if (int.parse(status) == 0) {
-        print(status);
-        print('sssssssss');
+      if (int.parse(status) == 1) {
         getIt<ProcessBloc>()
             .add(ProcessOrderEvent(store: int.parse(store), order: order));
       }
-
-      print(status);
-      print('nnnnnn');
-
       getIt<DetailBloc>()
           .add(GetDetailEvent(store: int.parse(store), order: order));
       return null;
