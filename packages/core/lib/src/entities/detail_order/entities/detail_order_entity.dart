@@ -8,12 +8,13 @@ class ProductEntity {
   final double price;
   final int amount;
   final ImageEnt image;
-  ProductEntity(
-      {required this.sku,
-      required this.name,
-      required this.price,
-      required this.amount,
-      required this.image});
+  ProductEntity({
+    required this.sku,
+    required this.name,
+    required this.price,
+    required this.amount,
+    required this.image,
+  });
 
   factory ProductEntity.fromModel(ProductItem model) {
     return ProductEntity(

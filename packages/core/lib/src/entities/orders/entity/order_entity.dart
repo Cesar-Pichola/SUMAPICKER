@@ -9,13 +9,14 @@ class OrderEntity {
   final Client client;
   final Receptor receptor;
   final Billing billing;
-  OrderEntity(
-      {required this.code,
-      required this.status,
-      required this.date,
-      required this.client,
-      required this.receptor,
-      required this.billing});
+  OrderEntity({
+    required this.code,
+    required this.status,
+    required this.date,
+    required this.client,
+    required this.receptor,
+    required this.billing,
+  });
 
   factory OrderEntity.fromModel(OrderItem model) {
     return OrderEntity(

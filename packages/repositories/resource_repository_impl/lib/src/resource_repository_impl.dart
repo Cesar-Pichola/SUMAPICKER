@@ -181,13 +181,17 @@ class ResourceRepositoryImpl extends IResourceRespository {
       };
 
       final response = await restApiClient.doneOrder(body);
-      return Right(
-        DoneEntity(
-          code: response.code,
-          indicator: response.indicator,
-          message: response.message,
-        ),
-      );
+      if (response.indicator == 'SUCCESSFUL') {
+        return Right(
+          DoneEntity(
+            code: response.code,
+            indicator: response.indicator,
+            message: response.message,
+          ),
+        );
+      } else {
+        return Left(response.message);
+      }
     } catch (e) {
       return Left('$e');
     }

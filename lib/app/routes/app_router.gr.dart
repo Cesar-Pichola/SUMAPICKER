@@ -20,17 +20,17 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<DetailsRouteArgs>(
           orElse: () => DetailsRouteArgs(
                 order: pathParams.getString('order'),
-                name: pathParams.getString('name'),
                 status: pathParams.getString('status'),
                 store: pathParams.getString('store'),
+                name: pathParams.getString('name'),
               ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DetailsPage(
           order: args.order,
-          name: args.name,
           status: args.status,
           store: args.store,
+          name: args.name,
         ),
       );
     },
@@ -63,23 +63,23 @@ abstract class _$AppRouter extends RootStackRouter {
 class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
   DetailsRoute({
     required String order,
-    required String name,
     required String status,
     required String store,
+    required String name,
     List<PageRouteInfo>? children,
   }) : super(
           DetailsRoute.name,
           args: DetailsRouteArgs(
             order: order,
-            name: name,
             status: status,
             store: store,
+            name: name,
           ),
           rawPathParams: {
             'order': order,
-            'name': name,
             'status': status,
             'store': store,
+            'name': name,
           },
           initialChildren: children,
         );
@@ -93,22 +93,22 @@ class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
 class DetailsRouteArgs {
   const DetailsRouteArgs({
     required this.order,
-    required this.name,
     required this.status,
     required this.store,
+    required this.name,
   });
 
   final String order;
-
-  final String name;
 
   final String status;
 
   final String store;
 
+  final String name;
+
   @override
   String toString() {
-    return 'DetailsRouteArgs{order: $order, name: $name, status: $status, store: $store}';
+    return 'DetailsRouteArgs{order: $order, status: $status, store: $store, name: $name}';
   }
 }
 

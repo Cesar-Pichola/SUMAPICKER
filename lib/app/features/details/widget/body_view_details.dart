@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:picker/app/features/details/bloc/bloc_detail/detail_bloc.dart';
 import 'package:picker/app/features/details/bloc/done_bloc/done_bloc.dart';
 import 'package:picker/app/features/details/widget/list_detail.dart';
@@ -115,8 +116,25 @@ class _BodyOrdersViewState extends State<BodyDetailView> {
                       ),
                       CustomOutlineButtom(
                           onPressed: () {
-                            getIt<DoneBloc>().add(DoneOrder(
-                                store: widget.store, order: widget.order));
+                            PanaraConfirmDialog.show(
+                              context,
+                              title: "Completar Pedido",
+                              message:
+                                  "¿Estás seguro de completar este pedido?",
+                              confirmButtonText: "Confirmar",
+                              cancelButtonText: "Cancelar",
+                              onTapCancel: () {
+                                Navigator.pop(context);
+                              },
+                              onTapConfirm: () {
+                                getIt<DoneBloc>().add(DoneOrder(
+                                    store: widget.store, order: widget.order));
+                                Navigator.pop(context);
+                              },
+                              panaraDialogType: PanaraDialogType.success,
+                              barrierDismissible:
+                                  false, // optional parameter (default is true)
+                            );
                           },
                           textBtn: 'Completar Pedido',
                           width: 250,

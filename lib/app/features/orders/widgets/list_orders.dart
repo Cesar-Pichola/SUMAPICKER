@@ -34,11 +34,8 @@ class ListOrders extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = state.orders![index];
                 return ItemOrder(
-                  status: item.status,
                   store: store,
-                  client: item.client,
-                  code: item.code,
-                  date: item.date,
+                  order: item,
                 );
               },
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:picker/app/blocs/bloc/selected_stored_bloc.dart';
+import 'package:picker/app/blocs/selected_order_bloc/selected_order_bloc.dart';
 import 'package:picker/app/features/details/bloc/Process_bloc/process_bloc.dart';
 import 'package:picker/app/features/details/bloc/bloc_detail/detail_bloc.dart';
 import 'package:picker/app/features/details/bloc/done_bloc/done_bloc.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<DoneBloc>(
             create: (context) => getIt<DoneBloc>(),
+          ),
+          BlocProvider<SelectedOrderBloc>(
+            create: (context) => getIt<SelectedOrderBloc>(),
           )
         ],
         child: ScreenUtilInit(

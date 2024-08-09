@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -11,17 +13,17 @@ import 'package:picker/gen/colors.gen.dart';
 
 @RoutePage()
 class DetailsPage extends HookWidget {
-  const DetailsPage(
-      {@pathParam required this.order,
-      @pathParam required this.name,
-      @pathParam required this.status,
-      @pathParam required this.store});
+  const DetailsPage({
+    @pathParam required this.order,
+    @pathParam required this.status,
+    @pathParam required this.store,
+    @pathParam required this.name,
+  });
 
   final String order;
-  final String name;
   final String store;
   final String status;
-
+  final String name;
   @override
   Widget build(BuildContext context) {
     useEffect(() {
@@ -36,10 +38,10 @@ class DetailsPage extends HookWidget {
     return Scaffold(
       body: SafeArea(
         child: DetailsPageView(
+          nameClient: name,
           order: order,
           store: int.parse(store),
           code: order,
-          nameClient: name,
         ),
       ),
     );
@@ -47,17 +49,16 @@ class DetailsPage extends HookWidget {
 }
 
 class DetailsPageView extends StatelessWidget {
-  final String code;
   final String nameClient;
+  final String code;
   final int store;
   final String order;
-  const DetailsPageView({
-    super.key,
-    required this.code,
-    required this.nameClient,
-    required this.store,
-    required this.order,
-  });
+  const DetailsPageView(
+      {super.key,
+      required this.code,
+      required this.store,
+      required this.order,
+      required this.nameClient});
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +68,9 @@ class DetailsPageView extends StatelessWidget {
           child: Container(
             decoration: const BoxDecoration(color: AppColor.primary),
             child: HeaderViewDetails(
-              code: code,
+              store: store,
               nameClient: nameClient,
+              code: code,
             ),
           ),
         ),

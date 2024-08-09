@@ -30,12 +30,13 @@ class ProductItem {
   final int amount;
   final ImageProduct image;
 
-  ProductItem(
-      {required this.sku,
-      required this.name,
-      required this.price,
-      required this.amount,
-      required this.image});
+  ProductItem({
+    required this.sku,
+    required this.name,
+    required this.price,
+    required this.amount,
+    required this.image,
+  });
 
   factory ProductItem.fromJson(Map<String, dynamic> json) =>
       _$ProductItemFromJson(json);

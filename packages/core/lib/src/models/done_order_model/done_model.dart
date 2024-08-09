@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, depend_on_referenced_packages
+// ignore_for_file: public_member_api_docs, depend_on_referenced_packages, sort_constructors_first, lines_longer_than_80_chars
 
 import 'package:json_annotation/json_annotation.dart';
 part 'done_model.g.dart';

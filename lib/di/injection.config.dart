@@ -13,6 +13,8 @@ import 'package:core/vendors/dio/dio.dart' as _i48;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:picker/app/blocs/bloc/selected_stored_bloc.dart' as _i957;
+import 'package:picker/app/blocs/selected_order_bloc/selected_order_bloc.dart'
+    as _i1073;
 import 'package:picker/app/features/details/bloc/bloc_detail/detail_bloc.dart'
     as _i787;
 import 'package:picker/app/features/details/bloc/done_bloc/done_bloc.dart'
@@ -47,6 +49,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i957.SelectedStoredBloc>(
         () => _i957.SelectedStoredBloc());
     gh.lazySingleton<_i48.Dio>(() => appModule.dio());
+    gh.lazySingleton<_i1073.SelectedOrderBloc>(
+        () => _i1073.SelectedOrderBloc());
     gh.lazySingleton<_i992.RestApiClient>(
         () => appModule.restApiClient(gh<_i48.Dio>()));
     gh.lazySingleton<_i494.IResourceRespository>(
