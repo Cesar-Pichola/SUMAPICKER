@@ -19,7 +19,7 @@ class OrdersPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      getIt<OrdersBloc>().add(GetOrdersStore(store: int.parse(id)));
+      getIt<OrdersBloc>().add(GetOrdersStore(store: int.parse(id), type: 0));
       return null;
     }, [id]);
     return Scaffold(
@@ -45,7 +45,16 @@ class OrdersPageView extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Container(
-            decoration: const BoxDecoration(color: AppColor.primary),
+            // decoration: const BoxDecoration(color: Colors.white),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(40),
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+              color:  AppColor.primary,
+            ),
             child: HeaderViewOrders(
               name: nameStore,
             ),

@@ -14,10 +14,12 @@ import 'package:picker/di/injection.dart';
 
 class BodyDetailView extends StatefulWidget {
   final int store;
+  final int type;
   final String order;
   const BodyDetailView({
     super.key,
     required this.store,
+    required this.type,
     required this.order,
   });
 
@@ -77,7 +79,7 @@ class _BodyOrdersViewState extends State<BodyDetailView> {
                   Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 5.dm),
+                        margin: EdgeInsets.only(bottom: 10.dm),
                         padding: EdgeInsets.all(8.dm.clamp(5, 8)),
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -86,7 +88,7 @@ class _BodyOrdersViewState extends State<BodyDetailView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Llevas ${state.products!.length} tipo de productos',
+                              'El pedido contiene ${state.products!.length} producto(s)',
                               style: GoogleFonts.poppins(
                                   color: Colors.grey[800],
                                   fontSize: 12.sp.clamp(10, 12),
@@ -114,6 +116,7 @@ class _BodyOrdersViewState extends State<BodyDetailView> {
                           ],
                         ),
                       ),
+                      widget.type == 0?
                       CustomOutlineButtom(
                           onPressed: () {
                             PanaraConfirmDialog.show(
@@ -131,14 +134,14 @@ class _BodyOrdersViewState extends State<BodyDetailView> {
                                     store: widget.store, order: widget.order));
                                 Navigator.pop(context);
                               },
-                              panaraDialogType: PanaraDialogType.success,
+                              panaraDialogType: PanaraDialogType.error,
                               barrierDismissible:
                                   false, // optional parameter (default is true)
                             );
                           },
                           textBtn: 'Completar Pedido',
                           width: 250,
-                          height: 35),
+                          height: 35) : const SizedBox()
                     ],
                   )
                 ],

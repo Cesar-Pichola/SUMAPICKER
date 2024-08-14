@@ -18,7 +18,13 @@ class StoresPage extends StatelessWidget {
           children: [
             Positioned.fill(
               child: Container(
-                decoration: const BoxDecoration(color: AppColor.primary),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(0)
+                  ),
+                  color:  AppColor.primary,
+                ),
                 child: Stack(
                   children: [
                     Positioned(

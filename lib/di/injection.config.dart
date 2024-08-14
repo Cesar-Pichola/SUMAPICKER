@@ -46,24 +46,24 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final appModule = _$AppModule();
-    gh.lazySingleton<_i957.SelectedStoredBloc>(
-        () => _i957.SelectedStoredBloc());
     gh.lazySingleton<_i48.Dio>(() => appModule.dio());
     gh.lazySingleton<_i1073.SelectedOrderBloc>(
         () => _i1073.SelectedOrderBloc());
+    gh.lazySingleton<_i957.SelectedStoredBloc>(
+        () => _i957.SelectedStoredBloc());
     gh.lazySingleton<_i992.RestApiClient>(
         () => appModule.restApiClient(gh<_i48.Dio>()));
     gh.lazySingleton<_i494.IResourceRespository>(
         () => appModule.resourceRespository(gh<_i992.RestApiClient>()));
     gh.lazySingleton<_i205.GetStoresUseCase>(() => _i205.GetStoresUseCase(
         resourceRespository: gh<_i494.IResourceRespository>()));
-    gh.lazySingleton<_i513.GetOrdersUseCase>(() => _i513.GetOrdersUseCase(
-        resourceRespository: gh<_i494.IResourceRespository>()));
-    gh.lazySingleton<_i270.GetDetailUseCase>(() => _i270.GetDetailUseCase(
+    gh.lazySingleton<_i82.DoneOrderUseCase>(() => _i82.DoneOrderUseCase(
         resourceRespository: gh<_i494.IResourceRespository>()));
     gh.lazySingleton<_i98.ProcessOrderUseCase>(() => _i98.ProcessOrderUseCase(
         resourceRespository: gh<_i494.IResourceRespository>()));
-    gh.lazySingleton<_i82.DoneOrderUseCase>(() => _i82.DoneOrderUseCase(
+    gh.lazySingleton<_i270.GetDetailUseCase>(() => _i270.GetDetailUseCase(
+        resourceRespository: gh<_i494.IResourceRespository>()));
+    gh.lazySingleton<_i513.GetOrdersUseCase>(() => _i513.GetOrdersUseCase(
         resourceRespository: gh<_i494.IResourceRespository>()));
     gh.lazySingleton<_i325.StoresBloc>(
         () => _i325.StoresBloc(gh<_i205.GetStoresUseCase>()));

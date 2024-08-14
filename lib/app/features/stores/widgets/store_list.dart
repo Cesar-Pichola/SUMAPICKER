@@ -69,7 +69,7 @@ class _StoresListState extends State<StoresList> {
                         itemBuilder: (context, index) {
                           final item = state.stores![index];
                           return RadioListTile<int>(
-                            title: StoreItem(
+                            title: ItemStore(
                               name: item.name,
                             ),
                             activeColor: AppColor.primary,

@@ -22,6 +22,7 @@ abstract class _$AppRouter extends RootStackRouter {
                 order: pathParams.getString('order'),
                 status: pathParams.getString('status'),
                 store: pathParams.getString('store'),
+                type: pathParams.getString('type'),
                 name: pathParams.getString('name'),
               ));
       return AutoRoutePage<dynamic>(
@@ -30,6 +31,7 @@ abstract class _$AppRouter extends RootStackRouter {
           order: args.order,
           status: args.status,
           store: args.store,
+          type: args.type,
           name: args.name,
         ),
       );
@@ -65,6 +67,7 @@ class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
     required String order,
     required String status,
     required String store,
+    required String type,
     required String name,
     List<PageRouteInfo>? children,
   }) : super(
@@ -73,12 +76,14 @@ class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
             order: order,
             status: status,
             store: store,
+            type: type,
             name: name,
           ),
           rawPathParams: {
             'order': order,
             'status': status,
             'store': store,
+            'type': type,
             'name': name,
           },
           initialChildren: children,
@@ -95,6 +100,7 @@ class DetailsRouteArgs {
     required this.order,
     required this.status,
     required this.store,
+    required this.type,
     required this.name,
   });
 
@@ -104,11 +110,13 @@ class DetailsRouteArgs {
 
   final String store;
 
+  final String type;
+
   final String name;
 
   @override
   String toString() {
-    return 'DetailsRouteArgs{order: $order, status: $status, store: $store, name: $name}';
+    return 'DetailsRouteArgs{order: $order, status: $status, store: $store, type: $type, name: $name}';
   }
 }
 

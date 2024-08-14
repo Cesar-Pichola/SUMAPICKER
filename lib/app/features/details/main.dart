@@ -17,17 +17,19 @@ class DetailsPage extends HookWidget {
     @pathParam required this.order,
     @pathParam required this.status,
     @pathParam required this.store,
+    @pathParam required this.type,
     @pathParam required this.name,
   });
 
   final String order;
   final String store;
+  final String type;
   final String status;
   final String name;
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      if (int.parse(status) == 1) {
+      if (int.parse(status) != 2 && int.parse(status) != 3) {
         getIt<ProcessBloc>()
             .add(ProcessOrderEvent(store: int.parse(store), order: order));
       }
@@ -41,6 +43,7 @@ class DetailsPage extends HookWidget {
           nameClient: name,
           order: order,
           store: int.parse(store),
+          type: int.parse(type),
           code: order,
         ),
       ),
@@ -52,11 +55,13 @@ class DetailsPageView extends StatelessWidget {
   final String nameClient;
   final String code;
   final int store;
+  final int type;
   final String order;
   const DetailsPageView(
       {super.key,
       required this.code,
       required this.store,
+      required this.type,
       required this.order,
       required this.nameClient});
 
@@ -66,9 +71,16 @@ class DetailsPageView extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Container(
-            decoration: const BoxDecoration(color: AppColor.primary),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(40)
+              ),
+              color:  AppColor.primary,
+            ),
             child: HeaderViewDetails(
               store: store,
+              type: type,
               nameClient: nameClient,
               code: code,
             ),
@@ -81,6 +93,7 @@ class DetailsPageView extends StatelessWidget {
             right: 0,
             child: BodyDetailView(
               order: order,
+              type: type,
               store: store,
             )),
       ],

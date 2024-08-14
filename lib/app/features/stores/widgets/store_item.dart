@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class StoreItem extends StatelessWidget {
+class ItemStore extends StatelessWidget {
   final String name;
-  const StoreItem({
+  const ItemStore({
     super.key,
     required this.name,
   });

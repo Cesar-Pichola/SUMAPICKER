@@ -59,6 +59,8 @@ dependencies:
   json_annotation: ^4.9.0
   flutter_hooks: ^0.20.5
   panara_dialogs: ^0.1.5
+  url_launcher: ^6.3.0
+  tab_container: ^3.5.3
 
 dev_dependencies:
   flutter_test:

@@ -10,100 +10,35 @@ class ResourceRepositoryImpl extends IResourceRespository {
   final RestApiClient restApiClient;
   @override
   Future<Either<String, List<StoreEntity>>> getStores() async {
+    // final stores = <StoreEntity>[];
+      // final storeModel = <StoreModel>[];
+
     try {
-      final stores = <StoreEntity>[];
-      final storeModel = <StoreModel>[];
-      final data = [
-        {
-          '__typename': 'Store',
-          'id': 525,
-          'name': 'SUMA SALAMA',
-          'ref': '525_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 502,
-          'name': 'SUMA CHIMALTENANGO',
-          'ref': '502_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 519,
-          'name': 'SUMA PETEN',
-          'ref': '519_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 514,
-          'name': 'SUMA AMATITLAN',
-          'ref': '514_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 528,
-          'name': 'SUMA FRAIJANES',
-          'ref': '528_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 506,
-          'name': 'SUMA MAZATENANGO',
-          'ref': '506_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 516,
-          'name': 'SUMA CALLE REAL',
-          'ref': '516_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 512,
-          'name': 'SUMA NARANJO',
-          'ref': '512_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 515,
-          'name': 'SUMA LOS OLIVOS',
-          'ref': '515_SUMA',
-        },
-        {
-          '__typename': 'Store',
-          'id': 509,
-          'name': 'SUMA TIENDAS ESCUINTLA',
-          'ref': '509_SUMA',
+      final List<StoreEntity> stores = [];
+
+      final response = await restApiClient.getStores();
+      if (response.indicator == 'SUCCESSFUL') {
+        for (final item in response.stores!) {
+          stores.add(StoreEntity.fromModel(item));
         }
-      ];
 
-      for (final item in data) {
-        storeModel.add(
-          StoreModel(code: item['id']! as int, name: item['name']! as String),
-        );
+        return Right(stores);
+      } else {
+        return Left(response.message);
       }
-
-      await Future.delayed(
-        const Duration(seconds: 2),
-        () {
-          for (final item in storeModel) {
-            stores.add(StoreEntity.fromModel(item));
-          }
-        },
-      );
-
-      return Right(stores);
     } catch (e) {
-      return const Left('Error store');
+      return Left('$e');
     }
   }
 
   @override
   Future<Either<String, List<OrderEntity>>> getOrders({
     required int store,
+    required int type,
   }) async {
     try {
       final List<OrderEntity> orders = [];
-      final body = {'store': store, 'type': 0};
+      final body = {'store': store, 'type': type};
 
       final response = await restApiClient.getOrders(body);
       if (response.indicator == 'SUCCESSFUL') {

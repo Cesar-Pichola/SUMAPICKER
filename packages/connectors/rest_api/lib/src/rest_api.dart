@@ -14,6 +14,9 @@ part 'rest_api.g.dart';
 abstract class RestApiClient {
   @factoryMethod
   factory RestApiClient(Dio dio, {String baseUrl}) = _RestApiClient;
+  
+  @POST('stores/')
+  Future<StoresResponse> getStores();
 
   @POST('orders/')
   Future<OrdersResponse> getOrders(@Body() Map<String, dynamic> body);

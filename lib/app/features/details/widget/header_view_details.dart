@@ -14,13 +14,15 @@ import 'package:picker/gen/assets.gen.dart';
 
 class HeaderViewDetails extends StatelessWidget {
   final int store;
+  final int type;
   final String code;
   final String nameClient;
   const HeaderViewDetails(
       {super.key,
       required this.code,
       required this.nameClient,
-      required this.store});
+      required this.store, 
+      required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +50,13 @@ class HeaderViewDetails extends StatelessWidget {
                     listener: (context, state) {
                       if (state.status is UISuccess) {
                         context.router.pop();
-                        getIt<OrdersBloc>().add(GetOrdersStore(store: store));
+                        getIt<OrdersBloc>().add(GetOrdersStore(store: store, type: type));
                       }
                     },
                     child: IconButton(
                         onPressed: () {
                           context.router.pop();
+                          getIt<OrdersBloc>().add(GetOrdersStore(store: store, type: type));
                         },
                         icon: const Icon(
                           Icons.arrow_back_outlined,
@@ -77,7 +80,7 @@ class HeaderViewDetails extends StatelessWidget {
                     children: [
                       FadeIn(
                         child: Text(
-                          'No. $code',
+                          'Pedido $code',
                           style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 15,
@@ -98,7 +101,7 @@ class HeaderViewDetails extends StatelessWidget {
                           _showModal(context, const ClientInfo());
                         },
                         child: Text(
-                          'Ver mas',
+                          'Ver más',
                           style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 12,
@@ -124,7 +127,7 @@ void _showModal(BuildContext context, Widget child) {
     builder: (BuildContext context) {
       return Container(
         padding: EdgeInsets.only(top: 30.dm, left: 20.dm),
-        height: size.height * 05,
+        height: size.height /2.9,
         width: size.width,
         child: child,
       );

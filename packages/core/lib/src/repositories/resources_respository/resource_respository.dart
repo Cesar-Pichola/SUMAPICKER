@@ -7,7 +7,7 @@ import 'package:core/vendors/either/either.dart';
 
 abstract class IResourceRespository {
   Future<Either<String, List<StoreEntity>>> getStores();
-  Future<Either<String, List<OrderEntity>>> getOrders({required int store});
+  Future<Either<String, List<OrderEntity>>> getOrders({required int store, required int type});
   Future<Either<String, List<ProductEntity>>> getDetailOrder({
     required int store,
     required String order,

@@ -11,11 +11,15 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   OrdersBloc(this.getOrdersUseCase) : super(OrdersState()) {
     on<GetOrdersStore>((event, emit) async {
       emit(OrdersState(status: const UILoading()));
-      final result = await getOrdersUseCase(params: event.store);
+      final result = await getOrdersUseCase(params: RequestOrders(store: event.store, type: event.type));
       result.fold((error) {
         emit(OrdersState(message: error, status: UIError(message: error)));
       }, (response) {
-        emit(OrdersState(status: const UISuccess(), orders: response));
+        if(event.type == 0){
+          emit(OrdersState(status: const UISuccess(), orders: response));
+        } else{
+          emit(OrdersState(status: const UISuccess(), history: response));
+        }
       });
     });
   }

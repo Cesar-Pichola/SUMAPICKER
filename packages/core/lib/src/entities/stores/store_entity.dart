@@ -5,7 +5,7 @@ import 'package:core/core.dart';
 class StoreEntity {
   StoreEntity({required this.code, required this.name});
 
-  factory StoreEntity.fromModel(StoreModel model) {
+  factory StoreEntity.fromModel(StoreItem model) {
     return StoreEntity(
       code: model.code,
       name: model.name,

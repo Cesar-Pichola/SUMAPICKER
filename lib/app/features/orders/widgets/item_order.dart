@@ -9,11 +9,23 @@ import 'package:picker/di/injection.dart';
 class ItemOrder extends StatelessWidget {
   final OrderEntity order;
   final int store;
-  const ItemOrder({super.key, required this.order, required this.store});
+  final int type;
+  const ItemOrder({super.key, required this.order, required this.store, required this.type});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        getIt<SelectedOrderBloc>().add(SelectedOderEvt(order: order));
+
+        context.navigateTo(DetailsRoute(
+            name: order.client.name,
+            order: order.code,
+            status: order.status.toString(),
+            type: type.toString(),
+            store: store.toString()));
+      },
+      child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             color: Colors.white,
@@ -40,16 +52,8 @@ class ItemOrder extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w600),
                       ),
-                      (order.status == 1)
+                      (order.status == 2)
                           ? Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 5),
-                              width: 10,
-                              height: 10,
-                              decoration: const BoxDecoration(
-                                  color: Color(0xffF57C11),
-                                  shape: BoxShape.circle),
-                            )
-                          : Container(
                               margin: const EdgeInsets.symmetric(horizontal: 5),
                               width: 10,
                               height: 10,
@@ -57,6 +61,24 @@ class ItemOrder extends StatelessWidget {
                                   color: Color(0xff07F22B),
                                   shape: BoxShape.circle),
                             )
+                          : 
+                        (order.status == 3) 
+                          ? Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              width: 10,
+                              height: 10,
+                              decoration: const BoxDecoration(
+                                  color: Color.fromARGB(255, 223, 9, 12),
+                                  shape: BoxShape.circle),
+                            )
+                            : Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 5),
+                                width: 10,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                    color: Color(0xffF57C11),
+                                    shape: BoxShape.circle),
+                              )
                     ],
                   ),
                   Text(
@@ -86,12 +108,14 @@ class ItemOrder extends StatelessWidget {
                       name: order.client.name,
                       order: order.code,
                       status: order.status.toString(),
+                      type: type.toString(),
                       store: store.toString()));
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios,
                 )),
           ],
-        ));
+        )),
+    );
   }
 }
