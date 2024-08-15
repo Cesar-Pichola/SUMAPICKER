@@ -7,7 +7,7 @@ class StoreEntity {
 
   factory StoreEntity.fromModel(StoreItem model) {
     return StoreEntity(
-      code: model.code,
+      code: int.parse(model.code),
       name: model.name,
       // address: model.address.address,
     );

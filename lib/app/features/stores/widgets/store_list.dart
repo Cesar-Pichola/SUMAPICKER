@@ -63,7 +63,7 @@ class _StoresListState extends State<StoresList> {
                     }
                     if (state.status is UISuccess) {
                       return ListView.separated(
-                        itemCount: 10,
+                        itemCount: state.stores!.length,
                         separatorBuilder: (context, index) =>
                             Container(height: 10),
                         itemBuilder: (context, index) {

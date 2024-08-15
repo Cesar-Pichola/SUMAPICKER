@@ -4,7 +4,6 @@
 import 'package:core/core.dart';
 import 'package:core/vendors/dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'rest_api.g.dart';
@@ -14,7 +13,7 @@ part 'rest_api.g.dart';
 abstract class RestApiClient {
   @factoryMethod
   factory RestApiClient(Dio dio, {String baseUrl}) = _RestApiClient;
-  
+
   @POST('stores/')
   Future<StoresResponse> getStores();
 

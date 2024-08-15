@@ -17,7 +17,7 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
       final result = await getStoresUseCase();
 
       result.fold((error) {
-        emit(StoresState(status: const UILoading(), message: error));
+        emit(StoresState(status: UIError(message: error), message: error));
       }, (response) {
         emit(StoresState(status: const UISuccess(), stores: response));
       });

@@ -10,15 +10,12 @@ class ResourceRepositoryImpl extends IResourceRespository {
   final RestApiClient restApiClient;
   @override
   Future<Either<String, List<StoreEntity>>> getStores() async {
-    // final stores = <StoreEntity>[];
-      // final storeModel = <StoreModel>[];
-
     try {
       final List<StoreEntity> stores = [];
 
       final response = await restApiClient.getStores();
       if (response.indicator == 'SUCCESSFUL') {
-        for (final item in response.stores!) {
+        for (final item in response.stores) {
           stores.add(StoreEntity.fromModel(item));
         }
 

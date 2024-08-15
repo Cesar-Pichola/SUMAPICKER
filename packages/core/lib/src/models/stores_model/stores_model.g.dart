@@ -25,7 +25,7 @@ Map<String, dynamic> _$StoresResponseToJson(StoresResponse instance) =>
     };
 
 StoreItem _$StoreItemFromJson(Map<String, dynamic> json) => StoreItem(
-      code: (json['code'] as num).toInt(),
+      code: json['code'] as String,
       name: json['name'] as String,
     );
 

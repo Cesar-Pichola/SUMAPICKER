@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  retrofit: ^4.1.0
+  retrofit: ^4.2.0
   build_runner: ^2.4.9
   injectable: ^2.4.4
   injectable_generator: ^2.6.2
@@ -23,7 +23,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  retrofit_generator: ^8.1.2
+  retrofit_generator: ^8.2.0
   
   json_annotation: ^4.9.0
   very_good_analysis: ^5.1.0

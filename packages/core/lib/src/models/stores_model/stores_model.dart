@@ -24,7 +24,7 @@ class StoresResponse {
 
 @JsonSerializable()
 class StoreItem {
-  final int code;
+  final String code;
   final String name;
 
   StoreItem({
@@ -32,7 +32,7 @@ class StoreItem {
     required this.name,
   });
 
-   factory StoreItem.fromJson(Map<String, dynamic> json) =>
+  factory StoreItem.fromJson(Map<String, dynamic> json) =>
       _$StoreItemFromJson(json);
   Map<String, dynamic> toJson() => _$StoreItemToJson(this);
 }
